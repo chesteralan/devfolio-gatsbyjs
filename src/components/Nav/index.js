@@ -43,7 +43,7 @@ export default class Nav extends React.Component {
         <div className="navbar-collapse collapse justify-content-end" id="navbarDefault">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link js-scroll active" to="/">Home</Link>
+              <Link className={`nav-link js-scroll active`} to="/">Home</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link js-scroll" href="#about">About</a>

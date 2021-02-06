@@ -4,20 +4,30 @@ import { useStaticQuery, graphql } from 'gatsby'
 export default () => {
 
   const data = useStaticQuery(graphql`
-  query BlogImages {
-    allFile(filter: {publicURL: {regex: "/post-(.*)/"}}) {
-      nodes {
-        publicURL
+  query BloggerQuery {
+    allBloggerPost(sort: {order: DESC, fields: published}, limit: 3) {
+      posts: nodes {
+        id
+        title
+        content
+        featuredImage {
+          url
+        }
+        labels
+        url
+        author {
+          displayName
+        }
+        childMarkdownRemark {
+          excerpt
+        }
       }
     }
-    file(relativePath: { eq: "testimonial-2.jpg" }) {
-      publicURL
-    }
-  }
+  }  
   `)
     
-  const { allFile: { nodes }, file: { publicURL } } = data;
-
+  const { allBloggerPost: { posts } } = data;
+  
     return (
         <section id="blog" className="blog-mf sect-pt4 route">
         <div className="container">
@@ -35,10 +45,12 @@ export default () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-4">
+            {posts.map(({ id, url, title, content, featuredImage: { url: imageUrl }, author: { displayName: authorName }, childMarkdownRemark: { excerpt } }) => {
+              return (
+            <div className="col-md-4" key={id}>
               <div className="card card-blog">
                 <div className="card-img">
-                  <a href="blog-single.html"><img src={nodes[0].publicURL} alt="Blog Title" className="img-fluid" /></a>
+                  <a target="_blank" rel="noreferrer" href={url}><img src={imageUrl} alt="Blog Title" className="img-fluid" /></a>
                 </div>
                 <div className="card-body">
                   <div className="card-category-box">
@@ -46,88 +58,15 @@ export default () => {
                       <h6 className="category">Travel</h6>
                     </div>
                   </div>
-                  <h3 className="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
+                  <h3 className="card-title"><a rel="noreferrer" target="_blank" href={url}>{title}</a></h3>
                   <p className="card-description">
-                    Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                    a pellentesque nec,
-                    egestas non nisi.
+{excerpt}
                   </p>
-                </div>
-                <div className="card-footer">
-                  <div className="post-author">
-                    <a href={publicURL}>
-                      <img src={publicURL} alt="" className="avatar rounded-circle"/>
-                      <span className="author">Morgan Freeman</span>
-                    </a>
-                  </div>
-                  <div className="post-date">
-                    <span className="ion-ios-clock-outline"></span> 10 min
-                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="card card-blog">
-                <div className="card-img">
-                  <a href="blog-single.html"><img src={nodes[1].publicURL} alt="Blog Title" className="img-fluid"/></a>
-                </div>
-                <div className="card-body">
-                  <div className="card-category-box">
-                    <div className="card-category">
-                      <h6 className="category">Web Design</h6>
-                    </div>
-                  </div>
-                  <h3 className="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                  <p className="card-description">
-                    Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                    a pellentesque nec,
-                    egestas non nisi.
-                  </p>
-                </div>
-                <div className="card-footer">
-                  <div className="post-author">
-                    <a href={publicURL}>
-                      <img src={publicURL} alt="" className="avatar rounded-circle"/>
-                      <span className="author">Morgan Freeman</span>
-                    </a>
-                  </div>
-                  <div className="post-date">
-                    <span className="ion-ios-clock-outline"></span> 10 min
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card card-blog">
-                <div className="card-img">
-                  <a href="blog-single.html"><img src={nodes[2].publicURL} alt="Blog Title" className="img-fluid"/></a>
-                </div>
-                <div className="card-body">
-                  <div className="card-category-box">
-                    <div className="card-category">
-                      <h6 className="category">Web Design</h6>
-                    </div>
-                  </div>
-                  <h3 className="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                  <p className="card-description">
-                    Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                    a pellentesque nec,
-                    egestas non nisi.
-                  </p>
-                </div>
-                <div className="card-footer">
-                  <div className="post-author">
-                    <a href={publicURL}>
-                      <img src={publicURL} alt="" className="avatar rounded-circle"/>
-                      <span className="author">Morgan Freeman</span>
-                    </a>
-                  </div>
-                  <div className="post-date">
-                    <span className="ion-ios-clock-outline"></span> 10 min
-                  </div>
-                </div>
-              </div>
-            </div>
+              )
+            })}
           </div>
         </div>
       </section>
