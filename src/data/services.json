@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Web Design",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.",
+        "icon": "ion ion-desktop-sharp"
+    },
+    {
+        "name": "Web Development",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.",
+        "icon": "ion ion-code-slash-sharp"
+    },
+    {
+        "name": "Photography",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.",
+        "icon": "ion ion-camera-sharp"
+    },
+    {
+        "name": "Responsive Design",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.",
+        "icon": "ion ion-phone-portrait"
+    },
+    {
+        "name": "Graphic Design",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.",
+        "icon": "ion ion-color-palette-sharp"
+    },
+    {
+        "name": "Marketing Services",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.",
+        "icon": "ion ion-chatbox-ellipses-sharp"
+    }
+]
