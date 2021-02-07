@@ -8,15 +8,33 @@ local_backend: true
 publish_mode: editorial_workflow
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
-show_preview_links: false
+show_preview_links: true
 
 collections:
-  - name: services
-    label: Services
-    folder: services
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
+  - name: "settings"
+    label: "Settings"
+    editor:
+      preview: false
+    files:
+      - label: "Services"
+        name: "services-page"
+        file: "static/data/services.json"
+        fields:
+          - label: Services
+            name: services
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Description, name: description, widget: string}
+              - {label: icon, name: icon, widget: string}
+      - label: "Portfolio"
+        name: "portfolio"
+        file: "static/data/portfolio.json"
+        fields:
+          - label: Portfolio
+            name: portfolio
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Description, name: description, widget: string}
+              - {label: Category, name: category, widget: string}

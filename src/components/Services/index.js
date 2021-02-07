@@ -4,17 +4,19 @@ import { useStaticQuery, graphql } from 'gatsby'
 export default () => {
   const data = useStaticQuery(graphql`
   query ServicesQuery {
-    allServicesJson {
-      services: nodes {
-        name
-        description
-        icon
+    allDataJson {
+      nodes {
+        services {
+          description
+          icon
+          name
+        }
       }
     }
   }  
   `)
 
-  const { allServicesJson: { services } } = data;
+  const { allDataJson: { nodes: { services } } } = data;
 
     return (
 <section id="service" className="services-mf pt-5 route">
@@ -33,8 +35,7 @@ export default () => {
           </div>
         </div>
         <div className="row">
-{
-  services.map(({name, description, icon}) => (
+{ services.map(({name, description, icon}) => (
           <div className="col-md-4">
             <div className="service-box">
               <div className="service-ico">

@@ -9,19 +9,20 @@ export default () => {
         publicURL
       }
     }
-    allPortfolioJson {
-      portfolios: nodes {
-        title
-        description
-        category
-        image_src
+    allDataJson {
+      nodes {
+        portfolios: portfolio {
+          category
+          description
+          name
+        }
       }
     }
   }
   `)
     
   const { allFile: { nodes } } = data;
-  const { allPortfolioJson: { portfolios } } = data;
+  const { allPortfolioJson: { nodes: { portfolios } } } = data;
 
     return (
         <section id="work" className="portfolio-mf sect-pt4 route">

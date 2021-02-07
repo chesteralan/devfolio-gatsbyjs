@@ -7,6 +7,7 @@
   "dependencies": {
     "@icon/ionicons": "^5.0.1-alpha.0",
     "bootstrap": "^4.5.3",
+    "concurrently": "^5.3.0",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.9.0",
     "gatsby-plugin-manifest": "^2.6.1",
@@ -39,7 +40,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby clean && gatsby develop",
+    "dev": "concurrently --kill-others \"npx netlify-cms-proxy-server\" \"gatsby clean && gatsby develop\"",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
