@@ -10,5 +10,19 @@
       "description": "Web Development",
       "icon": "Web Development"
     }
+  ],
+  "title": "Services",
+  "description": "Services Page",
+  "items": [
+    {
+      "name": "WEB DESIGN",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.",
+      "icon": "icon"
+    },
+    {
+      "name": "WEB DEVELOPMENT",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni adipisci eaque autem fugiat! Quia, provident vitae! Magni tempora perferendis eum non provident.",
+      "icon": "icon"
+    }
   ]
 }

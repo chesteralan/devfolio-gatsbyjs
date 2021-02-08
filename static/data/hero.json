@@ -1,0 +1,20 @@
+{
+  "hero-title": "I am Morgan Freeman",
+  "hero-subtitles": [
+    {
+      "text": "CEO"
+    },
+    {
+      "text": "Web Developer"
+    },
+    {
+      "text": "Frontend Developer"
+    },
+    {
+      "text": "GatsbyJs"
+    },
+    {
+      "text": "Netlify CMS"
+    }
+  ]
+}

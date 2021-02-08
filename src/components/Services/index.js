@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 export default () => {
   const data = useStaticQuery(graphql`
   query ServicesQuery {
-    allDataJson {
+    allDataJson(filter: {services: {elemMatch: {name: {ne: null}}}}) {
       nodes {
         services {
           description
@@ -16,10 +16,10 @@ export default () => {
   }  
   `)
 
-  const { allDataJson: { nodes: { services } } } = data;
-
+  const { allDataJson: { nodes: [{ services }] } } = data;
+  
     return (
-<section id="service" className="services-mf pt-5 route">
+<section id="services" className="services-mf pt-5 route">
       <div className="container">
         <div className="row">
           <div className="col-sm-12">

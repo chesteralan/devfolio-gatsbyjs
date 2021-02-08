@@ -5,10 +5,12 @@ export default class Nav extends React.Component {
 
   constructor() {
     super();
-    this.listenToScroll = this.listenToScroll.bind(this);
     this.state = {
-      scrolled: false
+      scrolled: false,
+      active_nav: 'home'
     }
+    this.listenToScroll = this.listenToScroll.bind(this);
+    this.setActiveNav = this.setActiveNav.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +29,18 @@ export default class Nav extends React.Component {
     }
   }
 
+  activeNav(current_nav) {
+    if( this.state.active_nav === current_nav ) {
+      return 'active';
+    }
+  }
+
+  setActiveNav(value) {
+    this.setState(state => ({
+      active_nav: value
+    }));
+  }
+
   render() {
 
     const { scrolled } = this.state;
@@ -43,22 +57,22 @@ export default class Nav extends React.Component {
         <div className="navbar-collapse collapse justify-content-end" id="navbarDefault">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className={`nav-link js-scroll active`} to="/">Home</Link>
+              <Link className={`nav-link js-scroll ${this.activeNav('home')}`} to="/" onClick={() => this.setActiveNav('home') }>Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll" href="#about">About</a>
+              <a className={`nav-link js-scroll ${this.activeNav('about')}`} onClick={() => this.setActiveNav('about') } href="#about">About</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll" href="#service">Services</a>
+              <a className={`nav-link js-scroll ${this.activeNav('services')}`} onClick={() => this.setActiveNav('services') } href="#services">Services</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll" href="#work">Work</a>
+              <a className={`nav-link js-scroll ${this.activeNav('work')}`} onClick={() => this.setActiveNav('work') } href="#work">Work</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll" href="#blog">Blog</a>
+              <a className={`nav-link js-scroll ${this.activeNav('blog')}`} onClick={() => this.setActiveNav('blog') } href="#blog">Blog</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link js-scroll" href="#contact">Contact</a>
+              <a className={`nav-link js-scroll ${this.activeNav('contact')}`} onClick={() => this.setActiveNav('contact') } href="#contact">Contact</a>
             </li>
           </ul>
         </div>

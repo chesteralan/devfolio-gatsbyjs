@@ -16,25 +16,102 @@ collections:
     editor:
       preview: false
     files:
-      - label: "Services"
-        name: "services-page"
-        file: "static/data/services.json"
+      - label: "Navigation"
+        name: "navigation"
+        file: "static/data/navigation.json"
         fields:
-          - label: Services
-            name: services
+          - {label: Site Name, name: navigation-sitename, widget: string}
+          - label: Menus
+            name: navigation-menus
             widget: list
             fields:
               - {label: Name, name: name, widget: string}
-              - {label: Description, name: description, widget: string}
+              - {label: URL, name: url, widget: string}
+      - label: "Hero"
+        name: "hero"
+        file: "static/data/hero.json"
+        fields:
+          - {label: Title, name: hero-title, widget: string}
+          - label: Subtitles
+            name: hero-subtitles
+            widget: list
+            fields:
+              - {label: Text, name: text, widget: string}
+      - label: "About"
+        name: "about"
+        file: "static/data/about.json"
+        fields:
+          - {label: Name, name: about-name, widget: string}
+          - {label: Profile, name: about-profile, widget: string}
+          - {label: Email, name: about-email, widget: string}
+          - {label: Phone, name: about-phone, widget: string}
+          - {label: Address, name: about-address, widget: string}
+          - {label: About Me, name: about-me, widget: text}
+          - label: Skills
+            name: about-skills
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Years, name: years, widget: string}
+              - {label: Experience Percentage, name: percentage, widget: string}
+          - label: Social Media
+            name: about-socialmedia
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: URL, name: url, widget: string}
+              - {label: Icon, name: icon, widget: string}
+      - label: "Counter"
+        name: "counter"
+        file: "static/data/counter.json"
+        fields:
+          - {label: Title, name: counter-title, widget: string}
+          - {label: Works, name: counter-works, widget: string}
+          - {label: Years, name: counter-years, widget: string}
+          - {label: Clients, name: counter-clients, widget: string}
+          - {label: Awards, name: counter-awards, widget: string}
+      - label: "Services"
+        name: "services"
+        file: "static/data/services.json"
+        fields:
+          - {label: Title, name: services-title, widget: string}
+          - {label: Description, name: services-description, widget: string}
+          - label: Items
+            name: services-items
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Description, name: description, widget: text}
               - {label: icon, name: icon, widget: string}
+
       - label: "Portfolio"
         name: "portfolio"
         file: "static/data/portfolio.json"
         fields:
-          - label: Portfolio
-            name: portfolio
+          - {label: Title, name: portfolio-title, widget: string}
+          - {label: Description, name: portfolio-description, widget: string}
+          - label: Items
+            name: portfolio-items
             widget: list
             fields:
               - {label: Name, name: name, widget: string}
-              - {label: Description, name: description, widget: string}
+              - {label: Description, name: description, widget: text}
               - {label: Category, name: category, widget: string}
+      - label: "Testimonials"
+        name: "testimonials"
+        file: "static/data/testimonials.json"
+        fields:
+          - {label: Title, name: testimonials-title, widget: string}
+          - {label: Description, name: testimonials-description, widget: string}
+          - label: Items
+            name: testimonials-items
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Message, name: message, widget: text}
+      - label: "Blog"
+        name: "blog"
+        file: "static/data/blog.json"
+        fields:
+          - {label: Title, name: blog-title, widget: string}
+          - {label: Description, name: blog-description, widget: string}

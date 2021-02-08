@@ -24,7 +24,7 @@ export default () => {
 
     return (
         <>
-        <div className="testimonials paralax-mf bg-image" style={{ backgroundImage: `url(${publicURL})`}}>
+        <div id="testimonials" className="testimonials paralax-mf bg-image" style={{ backgroundImage: `url(${publicURL})`}}>
       <div className="overlay-mf"></div>
       <div className="container">
         <div className="row">

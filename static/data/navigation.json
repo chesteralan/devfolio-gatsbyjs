@@ -1,0 +1,9 @@
+{
+  "navigation-sitename": "DevFolio",
+  "navigation-menus": [
+    {
+      "name": "Home",
+      "url": "#"
+    }
+  ]
+}

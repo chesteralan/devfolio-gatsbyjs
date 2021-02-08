@@ -10,11 +10,21 @@ export default () => {
     file(relativePath: { eq: "intro-bg.png" }) {
       publicURL
     }
-  }  
+    allDataJson(filter: {hero_title: {ne: null}}) {
+      nodes {
+        hero_title
+        hero_subtitles {
+          text
+        }
+      }
+    }
+  }
   `)
 
   const { file: { publicURL } } = data;
-
+  const { allDataJson: { nodes: [{ hero_title, hero_subtitles }] } } = data;
+  const subtitles = hero_subtitles.map(s => s.text)
+  
     return (
 <div id="home" className="intro route bg-image" style={{backgroundImage: `url(${publicURL})`}}>
     <div className="overlay-itro"></div>
@@ -22,14 +32,8 @@ export default () => {
       <div className="table-cell">
         <div className="container">
           
-          <h1 className="intro-title mb-4">I am Morgan Freeman</h1>
-          <Typed className="intro-subtitle" strings={[
-            'CEO DevFolio',
-            'Web Developer',
-            'Web Designer',
-            'Frontend Developer',
-            'Graphic Designer'
-          ]} />
+          <h1 className="intro-title mb-4">{ hero_title }</h1>
+          <Typed className="intro-subtitle" strings={subtitles} />
           
         </div>
       </div>
