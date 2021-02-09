@@ -1,9 +1,15 @@
 {
-  "navigation-sitename": "DevFolio",
+  "navigation-sitename": "Site Title",
   "navigation-menus": [
     {
-      "name": "Home",
-      "url": "#"
+      "name": "About",
+      "url": "#about",
+      "id": "about"
+    },
+    {
+      "name": "Services",
+      "url": "#services",
+      "id": "services"
     }
   ]
 }

@@ -1,10 +1,13 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql, StaticQuery } from 'gatsby'
 
-export default class Nav extends React.Component {
 
-  constructor() {
-    super();
+
+class Nav extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.props = props;
     this.state = {
       scrolled: false,
       active_nav: 'home'
@@ -43,12 +46,13 @@ export default class Nav extends React.Component {
 
   render() {
 
+    const { data: { allDataJson: { nodes: [{ navigation_sitename, navigation_menus }] } } } = this.props;
     const { scrolled } = this.state;
 
     return (
       <nav className={`navbar navbar-b navbar-expand-md fixed-top ${scrolled?'navbar-reduce':'navbar-trans'}`} id="mainNav">
       <div className="container">
-        <a className="navbar-brand js-scroll" href="#page-top">DevFolio</a>
+        <Link className="navbar-brand js-scroll" to="/">{navigation_sitename}</Link>
         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span></span>
           <span></span>
@@ -56,24 +60,16 @@ export default class Nav extends React.Component {
         </button>
         <div className="navbar-collapse collapse justify-content-end" id="navbarDefault">
           <ul className="navbar-nav">
-            <li className="nav-item">
+            <li className="nav-item" key="home">
               <Link className={`nav-link js-scroll ${this.activeNav('home')}`} to="/" onClick={() => this.setActiveNav('home') }>Home</Link>
             </li>
-            <li className="nav-item">
-              <a className={`nav-link js-scroll ${this.activeNav('about')}`} onClick={() => this.setActiveNav('about') } href="#about">About</a>
+            {navigation_menus.map(({id,name,url}) => {
+              return (
+            <li key={id} className="nav-item">
+              <a className={`nav-link js-scroll ${this.activeNav(id)}`} onClick={() => this.setActiveNav(id) } href={url}>{name}</a>
             </li>
-            <li className="nav-item">
-              <a className={`nav-link js-scroll ${this.activeNav('services')}`} onClick={() => this.setActiveNav('services') } href="#services">Services</a>
-            </li>
-            <li className="nav-item">
-              <a className={`nav-link js-scroll ${this.activeNav('work')}`} onClick={() => this.setActiveNav('work') } href="#work">Work</a>
-            </li>
-            <li className="nav-item">
-              <a className={`nav-link js-scroll ${this.activeNav('blog')}`} onClick={() => this.setActiveNav('blog') } href="#blog">Blog</a>
-            </li>
-            <li className="nav-item">
-              <a className={`nav-link js-scroll ${this.activeNav('contact')}`} onClick={() => this.setActiveNav('contact') } href="#contact">Contact</a>
-            </li>
+            )
+            })}
           </ul>
         </div>
       </div>
@@ -82,3 +78,24 @@ export default class Nav extends React.Component {
   }
 
 }
+
+const NavComponent = () => (
+  <StaticQuery
+    query={graphql`
+    {
+      allDataJson(filter: {navigation_menus: {elemMatch: {name: {ne: null}}}, navigation_sitename: {ne: null}}) {
+        nodes {
+          navigation_sitename
+          navigation_menus {
+            name
+            url
+          }
+        }
+      }
+    }
+    `}
+    render={data => <Nav data={data} />}
+  ></StaticQuery>
+)
+
+export default NavComponent

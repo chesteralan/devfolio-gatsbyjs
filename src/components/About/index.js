@@ -7,11 +7,31 @@ export default () => {
       file(relativePath: { eq: "testimonial-2.jpg" }) {
         publicURL
       }
+      allDataJson(filter: {about_address: {ne: null}, about_email: {ne: null}, about_me: {ne: null}, about_name: {ne: null}, about_phone: {ne: null}, about_profile: {ne: null}, about_skills: {elemMatch: {name: {ne: null}}}, about_socialmedia: {elemMatch: {name: {ne: null}}}}) {
+        nodes {
+          about_address
+          about_email
+          about_me
+          about_name
+          about_phone
+          about_profile
+          about_skills {
+            name
+            percentage
+            years
+          }
+          about_socialmedia {
+            icon
+            name
+            url
+          }
+        }
+      }
     }
     `)
 
     const { file: { publicURL } } = data;
-
+    const { allDataJson: { nodes: [{ about_name, about_profile, about_email, about_phone, about_me }]}} = data;
     return (
         <section id="about" className="about-mf sect-pt4 route">
         <div className="container">
@@ -28,10 +48,10 @@ export default () => {
                       </div>
                       <div className="col-sm-6 col-md-7">
                         <div className="about-info">
-                          <p><span className="title-s">Name: </span> <span>Morgan Freeman</span></p>
-                          <p><span className="title-s">Profile: </span> <span>full stack developer</span></p>
-                          <p><span className="title-s">Email: </span> <span>contact@example.com</span></p>
-                          <p><span className="title-s">Phone: </span> <span>(617) 557-0089</span></p>
+                          <p><span className="title-s">Name: </span> <span>{about_name}</span></p>
+                          <p><span className="title-s">Profile: </span> <span>{about_profile}</span></p>
+                          <p><span className="title-s">Email: </span> <span>{about_email}</span></p>
+                          <p><span className="title-s">Phone: </span> <span>{about_phone}</span></p>
                         </div>
                       </div>
                     </div>
@@ -62,22 +82,7 @@ export default () => {
                           About me
                         </h5>
                       </div>
-                      <p className="lead">
-                        Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur arcu erat, accumsan id
-                        imperdiet et, porttitor
-                        at sem. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla
-                        porttitor accumsan tincidunt.
-                      </p>
-                      <p className="lead">
-                        Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis
-                        porttitor volutpat. Vestibulum
-                        ac diam sit amet quam vehicula elementum sed sit amet dui. porttitor at sem.
-                      </p>
-                      <p className="lead">
-                        Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim.
-                        Nulla porttitor accumsan
-                        tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                      </p>
+                      {about_me}
                     </div>
                   </div>
                 </div>

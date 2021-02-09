@@ -36,7 +36,7 @@ export default () => {
           </div>
           <div className="row">
 {portfolios.map(({ name, category }) => (
-            <div className="col-md-4">
+            <div key={name} className="col-md-4">
               <div className="work-box">
                 <a href="#" data-gall="portfolioGallery" className="venobox">
                   <div className="work-img">

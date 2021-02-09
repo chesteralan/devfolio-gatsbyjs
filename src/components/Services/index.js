@@ -36,7 +36,7 @@ export default () => {
         </div>
         <div className="row">
 { services.map(({name, description, icon}) => (
-          <div className="col-md-4">
+          <div className="col-md-4" key={name}>
             <div className="service-box">
               <div className="service-ico">
                 <span className="ico-circle"><i className={icon}></i></span>

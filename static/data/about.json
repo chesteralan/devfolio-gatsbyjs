@@ -1,0 +1,22 @@
+{
+  "about-name": "Chester Alan",
+  "about-profile": "Frontend Web Developer",
+  "about-email": "contact@chesteralan.com",
+  "about-phone": "09462559955",
+  "about-address": "Brgy. Sto. Nino, Davao City",
+  "about-me": "This is just a test ",
+  "about-skills": [
+    {
+      "name": "Skill 1",
+      "years": "3",
+      "percentage": "50"
+    }
+  ],
+  "about-socialmedia": [
+    {
+      "name": "Facebook",
+      "url": "#facebook",
+      "icon": "fa fa-facebook"
+    }
+  ]
+}

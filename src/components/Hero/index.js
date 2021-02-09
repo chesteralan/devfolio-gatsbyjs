@@ -10,7 +10,7 @@ export default () => {
     file(relativePath: { eq: "intro-bg.png" }) {
       publicURL
     }
-    allDataJson(filter: {hero_title: {ne: null}}) {
+    allDataJson(filter: {hero_title: {ne: null}, hero_subtitles: {elemMatch: {text: {ne: null}}}}) {
       nodes {
         hero_title
         hero_subtitles {
